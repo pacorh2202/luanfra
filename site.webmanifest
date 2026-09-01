@@ -1,0 +1,13 @@
+{
+  "name": "Talleres Luanfra S.L.",
+  "short_name": "Luanfra",
+  "description": "Mecanizado de precisión desde 1973. Molina de Segura, Murcia.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#08090B",
+  "theme_color": "#08090B",
+  "icons": [
+    { "src": "/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/icon-512.png", "sizes": "512x512", "type": "image/png" }
+  ]
+}
