@@ -1,0 +1,12 @@
+{
+  "redirects": [
+    { "source": "/pinones", "destination": "/", "permanent": true },
+    { "source": "/pinones/", "destination": "/", "permanent": true },
+    { "source": "/engranajes", "destination": "/", "permanent": true },
+    { "source": "/engranajes/", "destination": "/", "permanent": true },
+    { "source": "/mecanizado-gran-formato", "destination": "/", "permanent": true },
+    { "source": "/mecanizado-gran-formato/", "destination": "/", "permanent": true },
+    { "source": "/mecanizado-murcia", "destination": "/", "permanent": true },
+    { "source": "/mecanizado-murcia/", "destination": "/", "permanent": true }
+  ]
+}
