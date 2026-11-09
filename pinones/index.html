@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="es">
 <head>
 <meta charset="UTF-8">
@@ -22,7 +22,7 @@
 <link rel="icon" href="/favicon.ico" sizes="any">
 <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96.png">
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":["Service","ProfessionalService"],"name":"Piñones especiales y de cadena","description":"Fabricación de piñones de cadena, charnela y especiales bajo plano o muestra en Molina de Segura (Murcia).","provider":{"@type":"LocalBusiness","name":"Talleres Luanfra S.L.","url":"https://www.luanfra.com/","telephone":"+34968389401","email":"presupuestos@luanfra.com","address":{"@type":"PostalAddress","streetAddress":"Calle Cañada Morcillo, s/n · Pol. Ind. El Tapiado","addressLocality":"Molina de Segura","addressRegion":"Murcia","postalCode":"30500","addressCountry":"ES"},"openingHoursSpecification":{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday"],"opens":"07:00","closes":"15:30"}},"areaServed":"ES-MC","url":"https://www.luanfra.com/pinones/"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":["Service","ProfessionalService"],"name":"Piñones especiales y de cadena","description":"Fabricación de piñones de cadena, charnela y especiales bajo plano o muestra en Molina de Segura (Murcia).","provider":{"@type":"LocalBusiness","name":"Talleres Luanfra S.L.","url":"https://www.luanfra.com/","telephone":"+34968389401","email":"operaciones@luanfra.com","address":{"@type":"PostalAddress","streetAddress":"Calle Cañada Morcillo, s/n · Pol. Ind. El Tapiado","addressLocality":"Molina de Segura","addressRegion":"Murcia","postalCode":"30500","addressCountry":"ES"},"openingHoursSpecification":{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday"],"opens":"07:00","closes":"15:30"}},"areaServed":"ES-MC","url":"https://www.luanfra.com/pinones/"}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -105,7 +105,7 @@
   <div class="wrap">
     <span class="marca-sec">Presupuesto</span>
     <h2 class="h-l" style="margin-bottom:12px">Solicitud guiada — piñón</h2>
-    <p class="cuerpo" style="margin-bottom:8px">Rellena lo que sepas. Se abre tu correo a <strong>presupuestos@luanfra.com</strong> con el texto preparado.</p>
+    <p class="cuerpo" style="margin-bottom:8px">Rellena lo que sepas. Se abre tu correo a <strong>operaciones@luanfra.com</strong> con el texto preparado.</p>
     <div class="form form-box">
       <form id="form-pinon" novalidate>
         <div class="form-grid">
@@ -145,7 +145,7 @@
     <details><summary>¿Trabajáis solo con plano?</summary><p>No. Aceptamos plano, muestra, croquis o fotografía. Cuantos más datos (paso, Z, buje), más rápido el presupuesto.</p></details>
     <details><summary>¿Hacéis series o solo unidad?</summary><p>Ambos: prototipo, reposición y series cortas/medias según capacidad de taller.</p></details>
     <details><summary>¿También fabricáis engranajes de módulo?</summary><p>Sí: <a href="/engranajes/">página de engranajes</a> (módulo, dentado, tolerancia).</p></details>
-    <details><summary>¿Dónde está el taller?</summary><p>Polígono El Tapiado, Molina de Segura (Murcia). Tel. 968 38 94 01 · presupuestos@luanfra.com</p></details>
+    <details><summary>¿Dónde está el taller?</summary><p>Polígono El Tapiado, Molina de Segura (Murcia). Tel. 968 38 94 01 · operaciones@luanfra.com</p></details>
   </div>
 </section>
 
@@ -204,7 +204,7 @@ document.getElementById('form-pinon').addEventListener('submit',function(e){
   var g=function(id){return (document.getElementById(id).value||'').trim();};
   if(!g('p-emp')||!g('p-mail')){alert('Indica empresa y email.');return;}
   var body=['Solicitud presupuesto PIÑÓN — web luanfra.com/pinones/','','Empresa: '+g('p-emp'),'Email: '+g('p-mail'),'Teléfono: '+(g('p-tel')||'—'),'','Tipo: '+g('p-tipo'),'Paso / norma: '+(g('p-paso')||'—'),'Dientes (Z): '+(g('p-dientes')||'—'),'Ø exterior: '+(g('p-dext')||'—'),'Ø interior / buje: '+(g('p-dint')||'—'),'Ancho / corona: '+(g('p-ancho')||'—'),'Material: '+(g('p-mat')||'—'),'Cantidad: '+(g('p-cant')||'—'),'Plazo: '+(g('p-plazo')||'—'),'','Buje / observaciones:',g('p-buje')||'—','','(Adjuntar plano, croquis o foto en este correo si se dispone.)'].join('\n');
-  window.location.href='mailto:presupuestos@luanfra.com?subject='+encodeURIComponent('Presupuesto piñón — '+g('p-emp'))+'&body='+encodeURIComponent(body);
+  window.location.href='mailto:operaciones@luanfra.com?subject='+encodeURIComponent('Presupuesto piñón — '+g('p-emp'))+'&body='+encodeURIComponent(body);
 });
 </script>
 </body>

@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="es">
 <head>
 <meta charset="UTF-8">
@@ -22,7 +22,7 @@
 <link rel="icon" href="/favicon.ico" sizes="any">
 <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96.png">
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":["Service","ProfessionalService"],"name":"Mecanizado de gran formato","description":"Fresado de gran formato y piezas grandes en Molina de Segura (Murcia). Columna móvil, soldadura y control dimensional.","provider":{"@type":"LocalBusiness","name":"Talleres Luanfra S.L.","url":"https://www.luanfra.com/","telephone":"+34968389401","email":"presupuestos@luanfra.com","address":{"@type":"PostalAddress","streetAddress":"Calle Cañada Morcillo, s/n · Pol. Ind. El Tapiado","addressLocality":"Molina de Segura","addressRegion":"Murcia","postalCode":"30500","addressCountry":"ES"},"openingHoursSpecification":{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday"],"opens":"07:00","closes":"15:30"}},"areaServed":"ES-MC","url":"https://www.luanfra.com/mecanizado-gran-formato/"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":["Service","ProfessionalService"],"name":"Mecanizado de gran formato","description":"Fresado de gran formato y piezas grandes en Molina de Segura (Murcia). Columna móvil, soldadura y control dimensional.","provider":{"@type":"LocalBusiness","name":"Talleres Luanfra S.L.","url":"https://www.luanfra.com/","telephone":"+34968389401","email":"operaciones@luanfra.com","address":{"@type":"PostalAddress","streetAddress":"Calle Cañada Morcillo, s/n · Pol. Ind. El Tapiado","addressLocality":"Molina de Segura","addressRegion":"Murcia","postalCode":"30500","addressCountry":"ES"},"openingHoursSpecification":{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday"],"opens":"07:00","closes":"15:30"}},"areaServed":"ES-MC","url":"https://www.luanfra.com/mecanizado-gran-formato/"}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -139,7 +139,7 @@
     <h2>Preguntas frecuentes</h2>
     <details><summary>¿Qué tamaño máximo aceptáis?</summary><p>Orientativamente hasta X 10.000 mm en fresado de gran formato y Ø 950 × 2.000 mm en torno de volteo. Confirmamos con plano y peso.</p></details>
     <details><summary>¿Soldáis y mecanizáis el mismo conjunto?</summary><p>Sí: sección de soldadura y mecanizado posterior.</p></details>
-    <details><summary>¿Cómo pedir presupuesto?</summary><p>Usa el formulario de esta página o escribe a presupuestos@luanfra.com con envolvente y plano.</p></details>
+    <details><summary>¿Cómo pedir presupuesto?</summary><p>Usa el formulario de esta página o escribe a operaciones@luanfra.com con envolvente y plano.</p></details>
   </div>
 </section>
 
@@ -198,7 +198,7 @@ document.getElementById('form-gf').addEventListener('submit',function(e){
   var g=function(id){return (document.getElementById(id).value||'').trim();};
   if(!g('g-emp')||!g('g-mail')){alert('Indica empresa y email.');return;}
   var body=['Solicitud presupuesto GRAN FORMATO — web luanfra.com/mecanizado-gran-formato/','','Empresa: '+g('g-emp'),'Email: '+g('g-mail'),'Teléfono: '+(g('g-tel')||'—'),'','Envolvente L×A×H (mm): '+(g('g-l')||'?')+' × '+(g('g-a')||'?')+' × '+(g('g-h')||'?'),'Peso aprox.: '+(g('g-peso')||'—'),'Material: '+(g('g-mat')||'—'),'','Operaciones / observaciones:',g('g-obs')||'—','','(Adjuntar plano o foto.)'].join('\n');
-  window.location.href='mailto:presupuestos@luanfra.com?subject='+encodeURIComponent('Presupuesto gran formato — '+g('g-emp'))+'&body='+encodeURIComponent(body);
+  window.location.href='mailto:operaciones@luanfra.com?subject='+encodeURIComponent('Presupuesto gran formato — '+g('g-emp'))+'&body='+encodeURIComponent(body);
 });
 </script>
 </body>

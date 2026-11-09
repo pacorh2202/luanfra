@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="es">
 <head>
 <meta charset="UTF-8">
@@ -22,7 +22,7 @@
 <link rel="icon" href="/favicon.ico" sizes="any">
 <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96.png">
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":["Service","ProfessionalService"],"name":"Engranajes a medida","description":"Fabricación de engranajes de módulo rectos y helicoidales, dentado interior y exterior, bajo plano en Molina de Segura (Murcia).","provider":{"@type":"LocalBusiness","name":"Talleres Luanfra S.L.","url":"https://www.luanfra.com/","telephone":"+34968389401","email":"presupuestos@luanfra.com","address":{"@type":"PostalAddress","streetAddress":"Calle Cañada Morcillo, s/n · Pol. Ind. El Tapiado","addressLocality":"Molina de Segura","addressRegion":"Murcia","postalCode":"30500","addressCountry":"ES"},"openingHoursSpecification":{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday"],"opens":"07:00","closes":"15:30"}},"areaServed":"ES-MC","url":"https://www.luanfra.com/engranajes/"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":["Service","ProfessionalService"],"name":"Engranajes a medida","description":"Fabricación de engranajes de módulo rectos y helicoidales, dentado interior y exterior, bajo plano en Molina de Segura (Murcia).","provider":{"@type":"LocalBusiness","name":"Talleres Luanfra S.L.","url":"https://www.luanfra.com/","telephone":"+34968389401","email":"operaciones@luanfra.com","address":{"@type":"PostalAddress","streetAddress":"Calle Cañada Morcillo, s/n · Pol. Ind. El Tapiado","addressLocality":"Molina de Segura","addressRegion":"Murcia","postalCode":"30500","addressCountry":"ES"},"openingHoursSpecification":{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday"],"opens":"07:00","closes":"15:30"}},"areaServed":"ES-MC","url":"https://www.luanfra.com/engranajes/"}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -105,7 +105,7 @@
   <div class="wrap">
     <span class="marca-sec">Presupuesto</span>
     <h2 class="h-l" style="margin-bottom:12px">Solicitud — engranaje</h2>
-    <p class="cuerpo" style="margin-bottom:8px">Completa lo conocido. Se prepara un correo a <strong>presupuestos@luanfra.com</strong>.</p>
+    <p class="cuerpo" style="margin-bottom:8px">Completa lo conocido. Se prepara un correo a <strong>operaciones@luanfra.com</strong>.</p>
     <div class="form form-box">
       <form id="form-eng" novalidate>
         <div class="form-grid">
@@ -203,7 +203,7 @@ document.getElementById('form-eng').addEventListener('submit',function(e){
   var g=function(id){return (document.getElementById(id).value||'').trim();};
   if(!g('e-emp')||!g('e-mail')){alert('Indica empresa y email.');return;}
   var body=['Solicitud presupuesto ENGRANAJE — web luanfra.com/engranajes/','','Empresa: '+g('e-emp'),'Email: '+g('e-mail'),'Teléfono: '+(g('e-tel')||'—'),'','Tipo dentado: '+g('e-tipo'),'Módulo: '+(g('e-mod')||'—'),'Dientes (Z): '+(g('e-z')||'—'),'Material: '+(g('e-mat')||'—'),'Tolerancia / calidad: '+(g('e-tol')||'—'),'Cantidad: '+(g('e-cant')||'—'),'Plazo: '+(g('e-plazo')||'—'),'','Observaciones:',g('e-obs')||'—','','(Adjuntar plano PDF/STEP si se dispone.)'].join('\n');
-  window.location.href='mailto:presupuestos@luanfra.com?subject='+encodeURIComponent('Presupuesto engranaje — '+g('e-emp'))+'&body='+encodeURIComponent(body);
+  window.location.href='mailto:operaciones@luanfra.com?subject='+encodeURIComponent('Presupuesto engranaje — '+g('e-emp'))+'&body='+encodeURIComponent(body);
 });
 </script>
 </body>
