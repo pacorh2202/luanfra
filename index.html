@@ -1052,9 +1052,7 @@ footer{padding:56px 0 32px;border-top:1px solid var(--rule)}
       aviso.className='aviso ver'; return;
     }
 
-    /* Envío a operaciones@ vía FormSubmit (sin cuenta Formspree).
-       La primera vez FormSubmit manda un correo de activación a operaciones@;
-       hay que confirmar ese enlace una sola vez. */
+    /* FormSubmit: destino = hash activado para operaciones@luanfra.com */
     var boton = form.querySelector('button[type="submit"]');
     var textoBoton = boton.textContent;
     boton.disabled = true;
@@ -1066,10 +1064,14 @@ footer{padding:56px 0 32px;border-top:1px solid var(--rule)}
     carga.set('_template', 'table');
     carga.set('_captcha', 'false');
 
-    fetch('https://formsubmit.co/ajax/operaciones@luanfra.com', {
+    var ctrl = (typeof AbortController !== 'undefined') ? new AbortController() : null;
+    var temporizador = setTimeout(function(){ if(ctrl) ctrl.abort(); }, 15000);
+
+    fetch('https://formsubmit.co/ajax/ed7541912776c0e15033d1019d89b965', {
       method: 'POST',
       headers: {'Accept': 'application/json'},
-      body: carga
+      body: carga,
+      signal: ctrl ? ctrl.signal : undefined
     }).then(function(r){
       return r.json().then(function(d){
         if(r.ok && (!d || d.success !== false)){
@@ -1086,6 +1088,7 @@ footer{padding:56px 0 32px;border-top:1px solid var(--rule)}
       aviso.textContent='No se ha podido enviar. Escríbenos a operaciones@luanfra.com o llama al 968 38 94 01.';
       aviso.className='aviso ver';
     }).then(function(){
+      clearTimeout(temporizador);
       boton.disabled = false;
       boton.textContent = textoBoton;
     });
