@@ -7,6 +7,24 @@
     { "source": "/mecanizado-gran-formato", "destination": "/", "permanent": true },
     { "source": "/mecanizado-gran-formato/", "destination": "/", "permanent": true },
     { "source": "/mecanizado-murcia", "destination": "/", "permanent": true },
-    { "source": "/mecanizado-murcia/", "destination": "/", "permanent": true }
+    { "source": "/mecanizado-murcia/", "destination": "/", "permanent": true },
+
+    { "source": "/clientes/default.aspx", "destination": "/", "permanent": true },
+    { "source": "/clientes", "destination": "/", "permanent": true },
+    { "source": "/clientes/", "destination": "/", "permanent": true },
+    { "source": "/Clientes/default.aspx", "destination": "/", "permanent": true },
+
+    { "source": "/user/clientes.php", "destination": "/", "permanent": true },
+    { "source": "/user/index.php", "destination": "/", "permanent": true },
+    { "source": "/user/categorias.php", "destination": "/", "permanent": true },
+    { "source": "/user/:path*", "destination": "/", "permanent": true },
+
+    { "source": "/default.aspx", "destination": "/", "permanent": true },
+    { "source": "/Default.aspx", "destination": "/", "permanent": true },
+    { "source": "/index.aspx", "destination": "/", "permanent": true },
+    { "source": "/inicio.aspx", "destination": "/", "permanent": true },
+
+    { "source": "/index.php", "destination": "/", "permanent": true },
+    { "source": "/index.php/", "destination": "/", "permanent": true }
   ]
 }
