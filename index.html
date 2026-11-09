@@ -1052,30 +1052,36 @@ footer{padding:56px 0 32px;border-top:1px solid var(--rule)}
       aviso.className='aviso ver'; return;
     }
 
-    /* Envío a Formspree por fetch: el visitante no sale de la página
-       y no necesita tener configurado un gestor de correo. */
+    /* Envío a operaciones@ vía FormSubmit (sin cuenta Formspree).
+       La primera vez FormSubmit manda un correo de activación a operaciones@;
+       hay que confirmar ese enlace una sola vez. */
     var boton = form.querySelector('button[type="submit"]');
     var textoBoton = boton.textContent;
     boton.disabled = true;
     boton.textContent = 'Enviando…';
     aviso.className='aviso';
 
-    fetch('https://formspree.io/f/mdeoeepj', {
+    var carga = new FormData(form);
+    carga.set('_subject', 'Consulta de mecanizado desde la web');
+    carga.set('_template', 'table');
+    carga.set('_captcha', 'false');
+
+    fetch('https://formsubmit.co/ajax/operaciones@luanfra.com', {
       method: 'POST',
       headers: {'Accept': 'application/json'},
-      body: new FormData(form)
+      body: carga
     }).then(function(r){
-      if(r.ok){
-        form.reset();
-        aviso.textContent='Consulta enviada. Te responderemos lo antes posible.';
-        aviso.className='aviso ver bien';
-      }else{
-        return r.json().then(function(d){
-          var m = (d && d.errors) ? d.errors.map(function(x){return x.message;}).join('. ')
-                                  : 'No se ha podido enviar. Inténtalo de nuevo.';
+      return r.json().then(function(d){
+        if(r.ok && (!d || d.success !== false)){
+          form.reset();
+          aviso.textContent='Consulta enviada a operaciones. Te responderemos lo antes posible.';
+          aviso.className='aviso ver bien';
+        }else{
+          var m = (d && (d.message || d.error)) ? (d.message || d.error)
+                    : 'No se ha podido enviar. Inténtalo de nuevo.';
           aviso.textContent=m; aviso.className='aviso ver';
-        });
-      }
+        }
+      });
     }).catch(function(){
       aviso.textContent='No se ha podido enviar. Escríbenos a operaciones@luanfra.com o llama al 968 38 94 01.';
       aviso.className='aviso ver';
