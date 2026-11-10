@@ -310,6 +310,11 @@ footer{padding:56px 0 32px;border-top:1px solid var(--rule)}
 .pie-nav{display:flex;gap:26px;flex-wrap:wrap}
 .pie-nav a{font-size:.83rem;color:var(--sec);transition:color .25s}
 .pie-nav a:hover{color:var(--fg)}
+.pie-seo{margin-top:28px;padding-top:22px;border-top:1px solid var(--rule)}
+.pie-seo b{display:block;font-family:var(--mono);font-size:.58rem;letter-spacing:.14em;text-transform:uppercase;color:var(--sec);margin-bottom:12px;font-weight:500}
+.pie-seo-links{display:flex;flex-wrap:wrap;gap:8px 18px}
+.pie-seo-links a{font-size:.78rem;color:var(--sec);text-decoration:underline;text-underline-offset:3px}
+.pie-seo-links a:hover{color:var(--fg)}
 .legal{margin-top:42px;padding-top:22px;border-top:1px solid var(--rule);display:flex;
   justify-content:space-between;gap:15px;flex-wrap:wrap;
   font-family:var(--mono);font-size:.6rem;letter-spacing:.08em;color:var(--sec)}
