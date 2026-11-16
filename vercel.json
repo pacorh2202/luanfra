@@ -1,6 +1,7 @@
 {
   "trailingSlash": true,
   "redirects": [
+    { "source": "/index.html", "destination": "/", "permanent": true },
     { "source": "/engranajes/", "destination": "/piezas-especiales/", "permanent": true },
     { "source": "/pinones/", "destination": "/piezas-especiales/", "permanent": true },
 
