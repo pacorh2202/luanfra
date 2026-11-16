@@ -216,7 +216,7 @@ button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
 .t-rojo  {--bg:var(--rojo-fondo);--fg:#0A0B0D;--sec:#7A170F;--rule:rgba(10,11,13,.26);--acc:#0A0B0D;--panel:rgba(10,11,13,.06)}
 
 .wrap{max-width:var(--ancho);margin:0 auto;padding-left:var(--pad);padding-right:var(--pad)}
-.sec{padding:clamp(76px,10vw,138px) 0}
+.sec{padding-top:clamp(76px,10vw,138px);padding-bottom:clamp(76px,10vw,138px)}
 
 /* ---------- tipografía ---------- */
 .h-xxl,.h-xl,.h-l{font-weight:900;letter-spacing:-0.038em;line-height:0.90;text-transform:uppercase}
@@ -225,7 +225,7 @@ button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
 .h-l{font-size:clamp(1.5rem,2.8vw,2.3rem);letter-spacing:-0.028em}
 .sangria{display:block;padding-left:clamp(0px,7vw,5.5em)}
 .acc{color:var(--acc)}
-.perfil{color:transparent;-webkit-text-stroke:1.4px currentColor;opacity:.55}
+.perfil{color:transparent;-webkit-text-stroke:1.4px #F2F3F5;opacity:.6}
 
 .marca-sec{font-family:var(--mono);font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;
   color:var(--acc);margin-bottom:26px;display:block}
@@ -552,6 +552,37 @@ footer{padding:56px 0 32px;border-top:1px solid var(--rule)}
   .maq-grid,.cifras-grid{grid-template-columns:1fr}
 
 }
+
+/* Franja de servicios (2026-11-16) */
+#seo-servicios{border-top:1px solid rgba(0,0,0,.08);border-bottom:1px solid rgba(0,0,0,.08)}
+.srv{display:flex;flex-wrap:wrap;align-items:center;gap:14px 26px;padding-top:22px;padding-bottom:22px}
+.srv-et{font-family:var(--mono, ui-monospace, monospace);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:#E2231A}
+.srv-lista{display:flex;flex-wrap:wrap;gap:10px}
+.srv-lista a{display:inline-block;padding:9px 16px;border:1px solid rgba(10,11,13,.18);font-size:.9rem;font-weight:500;color:#0A0B0D;text-decoration:none;transition:border-color .2s,background .2s,color .2s}
+.srv-lista a:hover{border-color:#0A0B0D;background:#0A0B0D;color:#F2F3F5}
+.srv-lista a.srv-acc{background:#E2231A;border-color:#E2231A;color:#fff}
+.srv-lista a.srv-acc:hover{background:#B81A13;border-color:#B81A13}
+</style>
+<style>
+/* Paginas de servicio (2026-11-16) */
+.sv-dos{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:clamp(32px,5vw,80px);align-items:center}
+.sv-dos .foto{margin:0}
+.sv-dos .foto img{width:100%;aspect-ratio:4/3;object-fit:cover;display:block}
+.sv-pasos{list-style:none;padding:0;margin:0 0 56px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;counter-reset:paso}
+.sv-pasos li{max-width:none;overflow-wrap:anywhere;counter-increment:paso;border:1px solid rgba(10,11,13,.14);padding:26px 24px 24px;background:#fff;line-height:1.55}
+.sv-pasos li::before{content:"0" counter(paso);display:block;font-family:var(--mono);font-size:.72rem;letter-spacing:.16em;color:#E2231A;margin-bottom:14px}
+.sv-faq details{border-top:1px solid rgba(10,11,13,.14);padding:0}
+.sv-faq details:last-child{border-bottom:1px solid rgba(10,11,13,.14)}
+.sv-faq summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:20px;padding:20px 0;font-weight:600;font-size:1.05rem}
+.sv-faq summary::-webkit-details-marker{display:none}
+.sv-faq summary::after{content:"+";font-family:var(--mono);font-size:1.3rem;color:#E2231A;transition:transform .2s}
+.sv-faq details[open] summary::after{transform:rotate(45deg)}
+.sv-faq details p{margin:0 0 22px;max-width:68ch}
+.sv-otras{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-top:18px}
+.sv-otras a{display:flex;flex-direction:column;justify-content:space-between;min-height:118px;padding:20px;border:1px solid rgba(10,11,13,.14);color:#0A0B0D;text-decoration:none;font-weight:600;transition:background .2s,color .2s,border-color .2s}
+.sv-otras a span{font-family:var(--mono);font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:#E2231A;font-weight:400}
+.sv-otras a:hover{background:#0A0B0D;color:#F2F3F5;border-color:#0A0B0D}
+@media (max-width:860px){.sv-dos{grid-template-columns:1fr}.sv-pasos{grid-template-columns:1fr}.sv-otras{grid-template-columns:repeat(2,minmax(0,1fr))}}
 </style>
 <script type="application/ld+json">
 {
@@ -648,24 +679,31 @@ footer{padding:56px 0 32px;border-top:1px solid var(--rule)}
   </div>
 </header>
 
-<section id="seo-servicios" class="tema t-blanco" data-tema="blanco" style="padding:28px 0;border-top:1px solid rgba(0,0,0,.08)">
-  <div class="wrap" style="display:flex;flex-wrap:wrap;gap:14px 22px;align-items:center;font-size:.95rem">
-    <strong style="margin-right:8px">Servicios:</strong>
-    <a href="/mecanizado-murcia/">Mecanizado en Murcia</a>
-    <a href="/mecanizado-gran-formato/">Gran formato</a>
-    <a href="/torneado-fresado-cnc-murcia/">Torneado y fresado CNC</a>
-    <a href="/piezas-especiales/">Piezas especiales</a>
-    <a href="#contacto">Presupuesto</a>
+<section id="seo-servicios" class="tema t-blanco" data-tema="blanco">
+  <div class="wrap srv">
+    <span class="srv-et">Servicios</span>
+    <nav class="srv-lista" aria-label="Servicios">
+      <a href="/mecanizado-murcia/">Mecanizado en Murcia</a>
+      <a href="/mecanizado-gran-formato/">Gran formato</a>
+      <a href="/torneado-fresado-cnc-murcia/">Torneado y fresado CNC</a>
+      <a href="/piezas-especiales/">Piezas especiales</a>
+      <a class="srv-acc" href="#contacto">Pedir presupuesto</a>
+    </nav>
   </div>
 </section>
 <!-- ============ PAGINA PROPIA: piezas-especiales ============ -->
 <section class="tema t-blanco sec" data-tema="blanco" id="servicio">
   <div class="wrap">
     <span class="marca-sec rv">[01] — La pieza que no está en catálogo</span>
-    <h2 class="h-xl rv" style="margin-bottom:28px">Si no existe,<br>la fabricamos</h2>
-    <p class="cuerpo rv" style="max-width:68ch;margin-bottom:16px">Una pieza especial es la que no se compra hecha: un piñón con un paso fuera de norma, una cremallera a medida, el repuesto de una máquina que ya no se fabrica o una pieza diseñada solo para tu línea. En Talleres Luanfra fabricamos <strong>piezas especiales a medida</strong> desde 1973.</p>
-    <p class="cuerpo rv" style="max-width:68ch;margin-bottom:16px">Nacimos dando servicio a la industria conservera murciana y hoy fabricamos <strong>elementos de transmisión y piezas de maquinaria</strong> que trabajan en 20 ciudades españolas y en Portugal, Andorra, Suiza, Alemania y Polonia.</p>
-    <p class="cuerpo rv" style="max-width:68ch;margin-bottom:16px">Trabajamos <strong>bajo plano o bajo muestra</strong>. Si la pieza original está desgastada o rota, partimos de ella: nuestra oficina técnica la mide, la dibuja y la programa.</p>
+    <div class="sv-dos">
+      <div>
+        <h2 class="h-xl rv" style="margin-bottom:28px">Si no existe,<br>la fabricamos</h2>
+      <p class="cuerpo rv" style="max-width:62ch;margin-bottom:16px">Una pieza especial es la que no se compra hecha: un piñón con un paso fuera de norma, una cremallera a medida, el repuesto de una máquina que ya no se fabrica o una pieza diseñada solo para tu línea. En Talleres Luanfra fabricamos <strong>piezas especiales a medida</strong> desde 1973.</p>
+      <p class="cuerpo rv" style="max-width:62ch;margin-bottom:16px">Nacimos dando servicio a la industria conservera murciana y hoy fabricamos <strong>elementos de transmisión y piezas de maquinaria</strong> que trabajan en 20 ciudades españolas y en Portugal, Andorra, Suiza, Alemania y Polonia.</p>
+      <p class="cuerpo rv" style="max-width:62ch;margin-bottom:16px">Trabajamos <strong>bajo plano o bajo muestra</strong>. Si la pieza original está desgastada o rota, partimos de ella: nuestra oficina técnica la mide, la dibuja y la programa.</p>
+      </div>
+      <figure class="foto rv d1"><picture><source srcset="/img/pieza-macro.webp" type="image/webp"><img src="/img/pieza-macro.jpg" alt="Pieza especial fabricada a medida en Talleres Luanfra" loading="lazy" decoding="async"></picture></figure>
+    </div>
   </div>
 </section>
 
@@ -695,32 +733,38 @@ footer{padding:56px 0 32px;border-top:1px solid var(--rule)}
 <section class="tema t-blanco sec" data-tema="blanco" id="como">
   <div class="wrap">
     <span class="marca-sec rv">[03] — Cómo pedir presupuesto</span>
-    <h2 class="h-l rv" style="margin-bottom:22px">Cómo pedir una pieza especial</h2>
-    <ol class="cuerpo rv" style="max-width:68ch;padding-left:1.2em;margin-bottom:40px">
-      <li style="margin-bottom:10px">Envíanos el <strong>plano</strong> (PDF, DWG o STEP) o una <strong>foto de la pieza de muestra</strong> con sus medidas principales a operaciones@luanfra.com.</li>
-      <li style="margin-bottom:10px">Indica <strong>material, cantidad</strong> y para qué máquina es, si lo sabes.</li>
-      <li style="margin-bottom:10px">Si es una muestra, podemos <strong>recogerla con nuestro transporte</strong> en la Región de Murcia. Te enviamos el presupuesto.</li>
+    <h2 class="h-l rv" style="margin-bottom:28px">Cómo pedir una pieza especial</h2>
+    <ol class="sv-pasos">
+      <li class="rv cuerpo">Envíanos el <strong>plano</strong> (PDF, DWG o STEP) o una <strong>foto de la pieza de muestra</strong> con sus medidas principales a operaciones@luanfra.com.</li>
+      <li class="rv cuerpo">Indica <strong>material, cantidad</strong> y para qué máquina es, si lo sabes.</li>
+      <li class="rv cuerpo">Si es una muestra, podemos <strong>recogerla con nuestro transporte</strong> en la Región de Murcia. Te enviamos el presupuesto.</li>
     </ol>
     <span class="marca-sec rv">[04] — Preguntas frecuentes</span>
-    <div class="rv" style="max-width:76ch;margin-bottom:36px">
-      <details style="border-top:1px solid rgba(0,0,0,.12);padding:18px 0">
-        <summary style="cursor:pointer;font-weight:600;font-size:1.05rem">¿Podéis copiar una pieza sin plano?</summary>
-        <p class="cuerpo" style="margin-top:10px;max-width:68ch">Sí. Con la pieza de muestra, aunque esté desgastada o rota, la medimos, la dibujamos y fabricamos una nueva.</p>
+    <div class="sv-faq rv" style="max-width:860px;margin:18px 0 64px">
+      <details>
+        <summary>¿Podéis copiar una pieza sin plano?</summary>
+        <p class="cuerpo">Sí. Con la pieza de muestra, aunque esté desgastada o rota, la medimos, la dibujamos y fabricamos una nueva.</p>
       </details>
-      <details style="border-top:1px solid rgba(0,0,0,.12);padding:18px 0">
-        <summary style="cursor:pointer;font-weight:600;font-size:1.05rem">¿Fabricáis una sola unidad?</summary>
-        <p class="cuerpo" style="margin-top:10px;max-width:68ch">Sí. Fabricamos piezas unitarias y también series.</p>
+      <details>
+        <summary>¿Fabricáis una sola unidad?</summary>
+        <p class="cuerpo">Sí. Fabricamos piezas unitarias y también series.</p>
       </details>
-      <details style="border-top:1px solid rgba(0,0,0,.12);padding:18px 0">
-        <summary style="cursor:pointer;font-weight:600;font-size:1.05rem">¿Qué datos necesitáis para un piñón especial?</summary>
-        <p class="cuerpo" style="margin-top:10px;max-width:68ch">Paso de la cadena, número de dientes, diámetro y ancho del buje, y material. Para un engranaje: módulo, número de dientes y si es recto o helicoidal.</p>
+      <details>
+        <summary>¿Qué datos necesitáis para un piñón especial?</summary>
+        <p class="cuerpo">Paso de la cadena, número de dientes, diámetro y ancho del buje, y material. Para un engranaje: módulo, número de dientes y si es recto o helicoidal.</p>
       </details>
-      <details style="border-top:1px solid rgba(0,0,0,.12);padding:18px 0">
-        <summary style="cursor:pointer;font-weight:600;font-size:1.05rem">¿Qué materiales trabajáis?</summary>
-        <p class="cuerpo" style="margin-top:10px;max-width:68ch">Aceros, aceros especiales, aluminios, bronces, fundiciones y poliamidas.</p>
+      <details>
+        <summary>¿Qué materiales trabajáis?</summary>
+        <p class="cuerpo">Aceros, aceros especiales, aluminios, bronces, fundiciones y poliamidas.</p>
       </details>
     </div>
-    <p class="cuerpo rv" style="max-width:68ch">Otros servicios de Talleres Luanfra: <a href="/mecanizado-murcia/">Mecanizado en Murcia</a> · <a href="/mecanizado-gran-formato/">Mecanizado de gran formato</a> · <a href="/torneado-fresado-cnc-murcia/">Torneado y fresado CNC</a> · <a href="/">Página principal</a></p>
+    <span class="marca-sec rv">[05] — Otros servicios</span>
+    <nav class="sv-otras" aria-label="Otros servicios">
+      <a href="/mecanizado-murcia/"><span>Servicio</span>Mecanizado en Murcia</a>
+      <a href="/mecanizado-gran-formato/"><span>Servicio</span>Mecanizado de gran formato</a>
+      <a href="/torneado-fresado-cnc-murcia/"><span>Servicio</span>Torneado y fresado CNC</a>
+      <a href="/"><span>Talleres Luanfra</span>Página principal</a>
+    </nav>
   </div>
 </section>
 

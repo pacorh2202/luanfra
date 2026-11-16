@@ -216,7 +216,7 @@ button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
 .t-rojo  {--bg:var(--rojo-fondo);--fg:#0A0B0D;--sec:#7A170F;--rule:rgba(10,11,13,.26);--acc:#0A0B0D;--panel:rgba(10,11,13,.06)}
 
 .wrap{max-width:var(--ancho);margin:0 auto;padding-left:var(--pad);padding-right:var(--pad)}
-.sec{padding:clamp(76px,10vw,138px) 0}
+.sec{padding-top:clamp(76px,10vw,138px);padding-bottom:clamp(76px,10vw,138px)}
 
 /* ---------- tipografía ---------- */
 .h-xxl,.h-xl,.h-l{font-weight:900;letter-spacing:-0.038em;line-height:0.90;text-transform:uppercase}
@@ -225,7 +225,7 @@ button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
 .h-l{font-size:clamp(1.5rem,2.8vw,2.3rem);letter-spacing:-0.028em}
 .sangria{display:block;padding-left:clamp(0px,7vw,5.5em)}
 .acc{color:var(--acc)}
-.perfil{color:transparent;-webkit-text-stroke:1.4px currentColor;opacity:.55}
+.perfil{color:transparent;-webkit-text-stroke:1.4px #F2F3F5;opacity:.6}
 
 .marca-sec{font-family:var(--mono);font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;
   color:var(--acc);margin-bottom:26px;display:block}
@@ -552,6 +552,16 @@ footer{padding:56px 0 32px;border-top:1px solid var(--rule)}
   .maq-grid,.cifras-grid{grid-template-columns:1fr}
 
 }
+
+/* Franja de servicios (2026-11-16) */
+#seo-servicios{border-top:1px solid rgba(0,0,0,.08);border-bottom:1px solid rgba(0,0,0,.08)}
+.srv{display:flex;flex-wrap:wrap;align-items:center;gap:14px 26px;padding-top:22px;padding-bottom:22px}
+.srv-et{font-family:var(--mono, ui-monospace, monospace);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:#E2231A}
+.srv-lista{display:flex;flex-wrap:wrap;gap:10px}
+.srv-lista a{display:inline-block;padding:9px 16px;border:1px solid rgba(10,11,13,.18);font-size:.9rem;font-weight:500;color:#0A0B0D;text-decoration:none;transition:border-color .2s,background .2s,color .2s}
+.srv-lista a:hover{border-color:#0A0B0D;background:#0A0B0D;color:#F2F3F5}
+.srv-lista a.srv-acc{background:#E2231A;border-color:#E2231A;color:#fff}
+.srv-lista a.srv-acc:hover{background:#B81A13;border-color:#B81A13}
 </style>
 </head>
 <body>
@@ -608,14 +618,16 @@ footer{padding:56px 0 32px;border-top:1px solid var(--rule)}
   </div>
 </header>
 
-<section id="seo-servicios" class="tema t-blanco" data-tema="blanco" style="padding:28px 0;border-top:1px solid rgba(0,0,0,.08)">
-  <div class="wrap" style="display:flex;flex-wrap:wrap;gap:14px 22px;align-items:center;font-size:.95rem">
-    <strong style="margin-right:8px">Servicios:</strong>
-    <a href="/mecanizado-murcia/">Mecanizado en Murcia</a>
-    <a href="/mecanizado-gran-formato/">Gran formato</a>
-    <a href="/torneado-fresado-cnc-murcia/">Torneado y fresado CNC</a>
-    <a href="/piezas-especiales/">Piezas especiales</a>
-    <a href="#contacto">Presupuesto</a>
+<section id="seo-servicios" class="tema t-blanco" data-tema="blanco">
+  <div class="wrap srv">
+    <span class="srv-et">Servicios</span>
+    <nav class="srv-lista" aria-label="Servicios">
+      <a href="/mecanizado-murcia/">Mecanizado en Murcia</a>
+      <a href="/mecanizado-gran-formato/">Gran formato</a>
+      <a href="/torneado-fresado-cnc-murcia/">Torneado y fresado CNC</a>
+      <a href="/piezas-especiales/">Piezas especiales</a>
+      <a class="srv-acc" href="#contacto">Pedir presupuesto</a>
+    </nav>
   </div>
 </section>
 <!-- ============ EMPRESA (blanco) ============ -->

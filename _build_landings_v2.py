@@ -39,14 +39,9 @@ def caps(items):
 
 
 def faq_html(faq):
-    filas = []
-    for p, r in faq:
-        filas.append(
-            '      <details style="border-top:1px solid rgba(0,0,0,.12);padding:18px 0">\n'
-            f'        <summary style="cursor:pointer;font-weight:600;font-size:1.05rem">{p}</summary>\n'
-            f'        <p class="cuerpo" style="margin-top:10px;max-width:68ch">{r}</p>\n'
-            '      </details>')
-    return "\n".join(filas)
+    return "\n".join(
+        f'      <details>\n        <summary>{p}</summary>\n        <p class="cuerpo">{r}</p>\n      </details>'
+        for p, r in faq)
 
 
 def faq_schema(faq):
@@ -68,17 +63,48 @@ def foto(img, alt, pie_b, pie, d=""):
             f'        <figcaption><b>{pie_b}</b>{pie}</figcaption></figure>')
 
 
+ESTILO = """<style>
+/* Paginas de servicio (2026-11-16) */
+.sv-dos{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:clamp(32px,5vw,80px);align-items:center}
+.sv-dos .foto{margin:0}
+.sv-dos .foto img{width:100%;aspect-ratio:4/3;object-fit:cover;display:block}
+.sv-pasos{list-style:none;padding:0;margin:0 0 56px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;counter-reset:paso}
+.sv-pasos li{max-width:none;overflow-wrap:anywhere;counter-increment:paso;border:1px solid rgba(10,11,13,.14);padding:26px 24px 24px;background:#fff;line-height:1.55}
+.sv-pasos li::before{content:"0" counter(paso);display:block;font-family:var(--mono);font-size:.72rem;letter-spacing:.16em;color:#E2231A;margin-bottom:14px}
+.sv-faq details{border-top:1px solid rgba(10,11,13,.14);padding:0}
+.sv-faq details:last-child{border-bottom:1px solid rgba(10,11,13,.14)}
+.sv-faq summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:20px;padding:20px 0;font-weight:600;font-size:1.05rem}
+.sv-faq summary::-webkit-details-marker{display:none}
+.sv-faq summary::after{content:"+";font-family:var(--mono);font-size:1.3rem;color:#E2231A;transition:transform .2s}
+.sv-faq details[open] summary::after{transform:rotate(45deg)}
+.sv-faq details p{margin:0 0 22px;max-width:68ch}
+.sv-otras{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-top:18px}
+.sv-otras a{display:flex;flex-direction:column;justify-content:space-between;min-height:118px;padding:20px;border:1px solid rgba(10,11,13,.14);color:#0A0B0D;text-decoration:none;font-weight:600;transition:background .2s,color .2s,border-color .2s}
+.sv-otras a span{font-family:var(--mono);font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:#E2231A;font-weight:400}
+.sv-otras a:hover{background:#0A0B0D;color:#F2F3F5;border-color:#0A0B0D}
+@media (max-width:860px){.sv-dos{grid-template-columns:1fr}.sv-pasos{grid-template-columns:1fr}.sv-otras{grid-template-columns:repeat(2,minmax(0,1fr))}}
+</style>
+"""
+
+
 def cuerpo_pagina(c):
-    parrafos = "\n".join(f'    <p class="cuerpo rv" style="max-width:68ch;margin-bottom:16px">{p}</p>' for p in c["intro"])
-    pasos = "\n".join(f'      <li style="margin-bottom:10px">{p}</li>' for p in c["pasos"])
+    parrafos = "\n".join(f'      <p class="cuerpo rv" style="max-width:62ch;margin-bottom:16px">{p}</p>' for p in c["intro"])
+    pasos = "\n".join(f'      <li class="rv cuerpo">{p}</li>' for p in c["pasos"])
     fotos = "\n".join(foto(*f, d=("", " d1", " d2")[i]) for i, f in enumerate(c["fotos"]))
-    otras = " · ".join(f'<a href="{u}">{t}</a>' for u, t in OTRAS if c["slug"] not in u)
+    otras = "\n".join(f'      <a href="{u}"><span>Servicio</span>{t}</a>' for u, t in OTRAS if c["slug"] not in u)
+    otras += '\n      <a href="/"><span>Talleres Luanfra</span>Página principal</a>'
+    img, alt = c["foto01"]
     return f"""<!-- ============ PAGINA PROPIA: {c['slug']} ============ -->
 <section class="tema t-blanco sec" data-tema="blanco" id="servicio">
   <div class="wrap">
     <span class="marca-sec rv">[01] — {c['sec1']}</span>
-    <h2 class="h-xl rv" style="margin-bottom:28px">{c['h2']}</h2>
+    <div class="sv-dos">
+      <div>
+        <h2 class="h-xl rv" style="margin-bottom:28px">{c['h2']}</h2>
 {parrafos}
+      </div>
+      <figure class="foto rv d1"><picture><source srcset="/img/{img}.webp" type="image/webp"><img src="/img/{img}.jpg" alt="{alt}" loading="lazy" decoding="async"></picture></figure>
+    </div>
   </div>
 </section>
 
@@ -98,15 +124,18 @@ def cuerpo_pagina(c):
 <section class="tema t-blanco sec" data-tema="blanco" id="como">
   <div class="wrap">
     <span class="marca-sec rv">[03] — Cómo pedir presupuesto</span>
-    <h2 class="h-l rv" style="margin-bottom:22px">{c['h2c']}</h2>
-    <ol class="cuerpo rv" style="max-width:68ch;padding-left:1.2em;margin-bottom:40px">
+    <h2 class="h-l rv" style="margin-bottom:28px">{c['h2c']}</h2>
+    <ol class="sv-pasos">
 {pasos}
     </ol>
     <span class="marca-sec rv">[04] — Preguntas frecuentes</span>
-    <div class="rv" style="max-width:76ch;margin-bottom:36px">
+    <div class="sv-faq rv" style="max-width:860px;margin:18px 0 64px">
 {faq_html(c['faq'])}
     </div>
-    <p class="cuerpo rv" style="max-width:68ch">Otros servicios de Talleres Luanfra: {otras} · <a href="/">Página principal</a></p>
+    <span class="marca-sec rv">[05] — Otros servicios</span>
+    <nav class="sv-otras" aria-label="Otros servicios">
+{otras}
+    </nav>
   </div>
 </section>
 
@@ -123,6 +152,7 @@ OTRAS = [
 paginas = [
     {
         "slug": "mecanizado-murcia",
+        "foto01": ("nave-puente", "Puente grúa de 10 toneladas en la nave de Talleres Luanfra"),
         "title": "Taller de mecanizado en Murcia | Talleres Luanfra, Molina de Segura",
         "desc": "Taller de mecanizado industrial en Murcia desde 1973: piezas bajo plano o muestra, unitarias o en serie, con transporte propio en la Región. Molina de Segura. Tel. 968 38 94 01.",
         "og_title": "Taller de mecanizado en Murcia — Talleres Luanfra",
@@ -168,6 +198,7 @@ paginas = [
     },
     {
         "slug": "mecanizado-gran-formato",
+        "foto01": ("maq-soraluce", "Fresadora de columna móvil Soraluce para piezas de gran formato"),
         "title": "Mecanizado de gran formato en Murcia | Hasta 10 metros | Talleres Luanfra",
         "desc": "Mecanizado de piezas grandes en Murcia: fresadoras de columna móvil con X 10.000 mm, torno de volteo Ø 950 mm, soldadura propia y puentes grúa de 10 t. Molina de Segura.",
         "og_title": "Mecanizado de gran formato en Murcia — Talleres Luanfra",
@@ -212,6 +243,7 @@ paginas = [
     },
     {
         "slug": "torneado-fresado-cnc-murcia",
+        "foto01": ("nave-planta", "Líneas de tornos y fresadoras CNC en la planta de Molina de Segura"),
         "title": "Torneado y fresado CNC en Murcia | 5 ejes | Talleres Luanfra",
         "desc": "Mecanizado CNC en Murcia: fresado en 5 ejes, centros de mecanizado paletizados y tornos CNC con alimentador. Piezas unitarias y series. Molina de Segura. Tel. 968 38 94 01.",
         "og_title": "Torneado y fresado CNC en Murcia — Talleres Luanfra",
@@ -256,6 +288,7 @@ paginas = [
     },
     {
         "slug": "piezas-especiales",
+        "foto01": ("pieza-macro", "Pieza especial fabricada a medida en Talleres Luanfra"),
         "title": "Piezas especiales a medida en Murcia | Bajo plano o muestra | Talleres Luanfra",
         "desc": "Fabricación de piezas especiales a medida en Murcia: piñones especiales, cremalleras, coronas, husillos y piezas para maquinaria, bajo plano o muestra. Molina de Segura. Tel. 968 38 94 01.",
         "og_title": "Piezas especiales a medida — Talleres Luanfra",
@@ -329,7 +362,7 @@ for c in paginas:
         html = html.replace(f'href="#{ancla}"', f'href="/#{ancla}"')
     html = html.replace('href="#top"', 'href="/"')
     # Preguntas frecuentes en datos estructurados
-    html = html.replace("</head>", faq_schema(c["faq"]) + "</head>", 1)
+    html = html.replace("</head>", ESTILO + faq_schema(c["faq"]) + "</head>", 1)
     out = root / c["slug"] / "index.html"
     out.parent.mkdir(exist_ok=True)
     out.write_text(html, encoding="utf-8")
