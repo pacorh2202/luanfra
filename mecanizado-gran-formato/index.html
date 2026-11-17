@@ -568,6 +568,7 @@ footer{padding:56px 0 32px;border-top:1px solid var(--rule)}
 .sv-dos{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:clamp(32px,5vw,80px);align-items:center}
 .sv-dos .foto{margin:0}
 .sv-dos .foto img{width:100%;aspect-ratio:4/3;object-fit:cover;display:block}
+.sv-dos .foto.vertical img{aspect-ratio:4/5;max-height:640px}
 .sv-pasos{list-style:none;padding:0;margin:0 0 56px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;counter-reset:paso}
 .sv-pasos li{max-width:none;overflow-wrap:anywhere;counter-increment:paso;border:1px solid rgba(10,11,13,.14);padding:26px 24px 24px;background:#fff;line-height:1.55}
 .sv-pasos li::before{content:"0" counter(paso);display:block;font-family:var(--mono);font-size:.72rem;letter-spacing:.16em;color:#E2231A;margin-bottom:14px}

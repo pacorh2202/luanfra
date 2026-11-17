@@ -68,6 +68,7 @@ ESTILO = """<style>
 .sv-dos{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:clamp(32px,5vw,80px);align-items:center}
 .sv-dos .foto{margin:0}
 .sv-dos .foto img{width:100%;aspect-ratio:4/3;object-fit:cover;display:block}
+.sv-dos .foto.vertical img{aspect-ratio:4/5;max-height:640px}
 .sv-pasos{list-style:none;padding:0;margin:0 0 56px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;counter-reset:paso}
 .sv-pasos li{max-width:none;overflow-wrap:anywhere;counter-increment:paso;border:1px solid rgba(10,11,13,.14);padding:26px 24px 24px;background:#fff;line-height:1.55}
 .sv-pasos li::before{content:"0" counter(paso);display:block;font-family:var(--mono);font-size:.72rem;letter-spacing:.16em;color:#E2231A;margin-bottom:14px}
@@ -103,7 +104,7 @@ def cuerpo_pagina(c):
         <h2 class="h-xl rv" style="margin-bottom:28px">{c['h2']}</h2>
 {parrafos}
       </div>
-      <figure class="foto rv d1"><picture><source srcset="/img/{img}.webp" type="image/webp"><img src="/img/{img}.jpg" alt="{alt}" loading="lazy" decoding="async"></picture></figure>
+      <figure class="foto rv d1{' vertical' if img in VERTICALES else ''}"><picture><source srcset="/img/{img}.webp" type="image/webp"><img src="/img/{img}.jpg" alt="{alt}" loading="lazy" decoding="async"></picture></figure>
     </div>
   </div>
 </section>
@@ -142,6 +143,8 @@ def cuerpo_pagina(c):
 """
 
 
+VERTICALES = {"casquillos-husillo", "pinon-cadena", "brida-fondo-gris", "brida-fondo-negro", "pinones-pareja", "brida-fondo-gris-2"}
+
 OTRAS = [
     ("/mecanizado-murcia/", "Mecanizado en Murcia"),
     ("/mecanizado-gran-formato/", "Mecanizado de gran formato"),
@@ -178,9 +181,9 @@ paginas = [
             ("Control dimensional", "Verificación con máquina de medición tridimensional Mitutoyo"),
         ],
         "fotos": [
-            ("pieza-bn", "Brida mecanizada de acero con taladros", "Brida", "Torneado y taladrado"),
+            ("brida-fondo-gris", "Brida de acero torneada con corona de taladros", "Brida", "Torneado y taladrado"),
             ("nave-planta", "Interior de la nave de Talleres Luanfra en Molina de Segura", "Nave de 5.000 m²", "Polígono El Tapiado"),
-            ("pieza-brida", "Brida de acero acabada con chavetero", "Serie acabada", "Control dimensional"),
+            ("casquillos-husillo", "Casquillos con brida y husillo mecanizados", "Casquillos y husillo", "Bajo plano"),
         ],
         "h2c": "Tres pasos y te contestamos",
         "pasos": [
@@ -269,9 +272,9 @@ paginas = [
             ("Roscado y acabado", "Roscadoras CNC hasta M-45, roscado por laminación, mortajadoras y taladradoras"),
         ],
         "fotos": [
-            ("pieza-macro", "Casquillo con brida con acabado de torno CNC", "Casquillo con brida", "Acabado de torno"),
+            ("casquillos-husillo", "Casquillos con brida y husillo torneados en CNC", "Casquillos y husillo", "Torneado CNC"),
             ("hero-torno", "Torno CNC trabajando en Talleres Luanfra", "Torno CNC", "Series de precisión"),
-            ("pieza-brida", "Brida de acero mecanizada en CNC", "Serie acabada", "Control dimensional"),
+            ("brida-fondo-gris-2", "Brida de acero mecanizada en CNC", "Brida", "Control dimensional"),
         ],
         "h2c": "Pide tu presupuesto CNC",
         "pasos": [
@@ -288,7 +291,7 @@ paginas = [
     },
     {
         "slug": "piezas-especiales",
-        "foto01": ("pieza-macro", "Pieza especial fabricada a medida en Talleres Luanfra"),
+        "foto01": ("casquillos-husillo", "Casquillos con brida y husillo fabricados a medida en Talleres Luanfra"),
         "title": "Piezas especiales a medida en Murcia | Bajo plano o muestra | Talleres Luanfra",
         "desc": "Fabricación de piezas especiales a medida en Murcia: piñones especiales, cremalleras, coronas, husillos y piezas para maquinaria, bajo plano o muestra. Molina de Segura. Tel. 968 38 94 01.",
         "og_title": "Piezas especiales a medida — Talleres Luanfra",
@@ -314,9 +317,9 @@ paginas = [
             ("Acoplamientos", "Acoplamiento de piñones y elementos de unión"),
         ],
         "fotos": [
-            ("pieza-macro", "Casquillo con brida fabricado a medida", "Casquillo con brida", "Pieza a medida"),
-            ("pieza-brida", "Brida de acero con chavetero fabricada bajo plano", "Brida con chavetero", "Bajo plano"),
-            ("pieza-bn", "Brida mecanizada con taladros y alojamiento", "Brida mecanizada", "Torneado y taladrado"),
+            ("pinon-cadena", "Piñón de cadena especial fabricado a medida", "Piñón especial", "Tallado propio"),
+            ("brida-fondo-negro", "Brida de acero fabricada bajo plano", "Brida", "Bajo plano"),
+            ("pinones-pareja", "Pareja de piñones de cadena fabricados a medida", "Piñones de cadena", "Serie acabada"),
         ],
         "h2c": "Cómo pedir una pieza especial",
         "pasos": [
